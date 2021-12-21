@@ -8,6 +8,8 @@ export const signIn = (userName, password) => {
             console.log(response && response.data);
 
             localStorage.setItem('accessToken', 'testing-token');
+            localStorage.setItem('userName', userName);
+
             window.location.replace('/login');
         })
         .catch(error => {
@@ -35,6 +37,8 @@ export const signIn = (userName, password) => {
 
 export const signOut = () => {
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('userName');
+
     window.location.replace('/login');
 }
 

@@ -1,0 +1,24 @@
+.aqua-readings-widget-container {
+    display: flex;
+}
+
+.aqua-data-widget-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 8px;
+    border: solid 1px grey;
+    padding: 5px 10px;
+    border-radius: 8px;
+    width: 85px;
+}
+
+.aqua-data-widget-title {
+    text-align: center;
+}
+
+.aqua-data-widget-value {
+    margin-top: 5px;
+    font-size: 1.3rem;
+}
