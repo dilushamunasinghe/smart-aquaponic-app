@@ -1,0 +1,42 @@
+.aqua-dashboard-page-container {
+
+}
+
+.aqua-dashboard-main-content-container {
+    padding: 10px 20px;
+}
+
+.aqua-dashboard-top-bar-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.aqua-dashboard-title {
+    font-size: 1.5rem;
+}
+
+.aqua-dashboard-auth-section {
+    display: flex;
+    align-items: center;
+}
+
+.aqua-dashboard-user-name-container {
+    margin-right: 10px;
+    color: grey;
+}
+
+.aqua-dashboard-user-name-container > .aqua-user-name {
+    font-weight: 500;
+    color: black;
+}
+
+.aqua-dashboard-logout-button-container {
+    display: flex;
+}
+
+.aqua-middle-widget-section-container {
+    display: flex;
+    margin: 25px 8px;
+}

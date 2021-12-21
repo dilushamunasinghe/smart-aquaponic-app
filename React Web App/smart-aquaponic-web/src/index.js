@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './routing/ProtectedRoute';
 import AuthRoute from './routing/AuthRoute';
+import './styles/common.css';
 
 ReactDOM.render(
   <React.StrictMode>

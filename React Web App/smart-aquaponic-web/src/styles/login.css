@@ -1,0 +1,23 @@
+.aq-login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.aq-login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aq-login-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.aq-login-button-container {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+}
