@@ -5,6 +5,8 @@ import { signIn } from '../services/authService';
 import '../styles/login.css';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Loader from '../components/common/Loader';
+import { toast } from 'react-toastify';
 
 const styles = {
     inputRoot: {
@@ -18,31 +20,63 @@ class Login extends Component {
         super(props)
 
         this.state = {
+            isLoading: false,
             username: '',
             password: '',
             isPasswordVisible: false,
         }
     }
 
+
+    /**
+     * Signs the user in with the given user name and password
+     * 
+     * @returns 
+     */
     userSignIn = () => {
         const { username, password } = this.state;
 
-        signIn(username, password);
+        if (!username || !password) {
+            toast.error('Please enter both user name and password');
+            return;
+        }
+
+        this.setState({ isLoading: true });
+
+        signIn(username, password, signInStatus => {
+            this.setState({ isLoading: false });
+
+            if (!signInStatus) toast.error('Error logging in');
+        });
     }
 
+
+    /**
+     * Toggles the visibility of the password text
+     * 
+     */
     togglePasswordVisibility = () => {
         this.setState({ isPasswordVisible: !this.state.isPasswordVisible });
     }
 
+
+    /**
+     * Handles updating the state with the given value for the given property 
+     * 
+     * @param {*} newValue 
+     * @param {*} key 
+     */
     onChangeValue = (newValue, key) => {
         this.setState({
             [key]: newValue,
         })
     }
 
+
     render() {
 
         const {
+            isLoading,
             isPasswordVisible,
             username,
             password,
@@ -54,7 +88,13 @@ class Login extends Component {
 
         return (
             <div className='aq-login-page-container'>
+
+                {isLoading &&
+                    <Loader />
+                }
+
                 <div className='aq-login-form-container'>
+                    <img className='aq-login-logo' alt='smart aquaponics logo' src='/aqua-logo.png' />
                     <div className='aq-login-text-container'>
                         <TextField
                             label='User Name'

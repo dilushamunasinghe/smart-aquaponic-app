@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export const signIn = (userName, password) => {
+export const signIn = (userName, password, callback) => {
 
     axios.get('https://jsonplaceholder.typicode.com/todos/1')
         .then(response => {
@@ -10,9 +10,12 @@ export const signIn = (userName, password) => {
             localStorage.setItem('accessToken', 'testing-token');
             localStorage.setItem('userName', userName);
 
+            if (callback) callback(true);
+
             window.location.replace('/login');
         })
         .catch(error => {
+            if (callback) callback(false);
             console.error('Request Failed', error);
         });
 

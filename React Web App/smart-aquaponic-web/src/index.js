@@ -13,6 +13,8 @@ import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './routing/ProtectedRoute';
 import AuthRoute from './routing/AuthRoute';
 import './styles/common.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -32,6 +34,7 @@ ReactDOM.render(
       </Routes>
     </BrowserRouter>
 
+    <ToastContainer theme='colored' />
   </React.StrictMode>,
   document.getElementById('root')
 );
