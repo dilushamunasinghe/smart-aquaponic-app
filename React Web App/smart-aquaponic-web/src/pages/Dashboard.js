@@ -20,8 +20,8 @@ const DUMMY_DATA = {
     waterTemp: 26,
     monthlyProduction: 78,
 
-    monthlyFish: 50,
-    monthlyPlant: 50,
+    monthlyFish: 40,
+    monthlyPlant: 60,
 
     lineChartData: null,
 }
@@ -40,10 +40,7 @@ export default class Dashboard extends Component {
             waterTemp: 0,
             monthlyProduction: 0,
 
-            pieChartData: {
-                fish: 0,
-                plant: 0,
-            },
+            pieChartData: [],
 
             lineChartData: null,
 
@@ -71,10 +68,10 @@ export default class Dashboard extends Component {
             waterTemp: responseData.waterTemp,
             monthlyProduction: responseData.monthlyProduction,
 
-            pieChartData: {
-                fish: responseData.monthlyFish,
-                plant: responseData.monthlyPlant,
-            },
+            pieChartData: [
+                { title: 'Fish', value: responseData.monthlyFish, color: '#31356e' },
+                { title: 'Plant', value: responseData.monthlyPlant, color: '#2f5f98' },
+            ],
 
             lineChartData: responseData.monthlyReportData,
         });
@@ -93,10 +90,10 @@ export default class Dashboard extends Component {
         //             waterTemp: responseData.waterTemp,
         //             monthlyProduction: responseData.monthlyProduction,
 
-        //             pieChartData: {
-        //                 fish: responseData.monthlyFish,
-        //                 plant: responseData.monthlyPlant,
-        //             },
+        //             pieChartData: [
+        //                 { title: 'Fish', value: responseData.monthlyFish, color: '#31356e' },
+        //                 { title: 'Plant', value: responseData.monthlyPlant, color: '#2f5f98' },
+        //             ],
 
         //             lineChartData: responseData.monthlyReportData,
         //         });
@@ -172,7 +169,7 @@ export default class Dashboard extends Component {
 
                         <PieChartWidget
                             title="This month's product prediction"
-                            data={pieChartData}
+                            pieChartData={pieChartData}
                             footer="kg/time (30 days)"
                         />
                     </div>

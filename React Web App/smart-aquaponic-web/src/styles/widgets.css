@@ -31,10 +31,12 @@
     border: solid 1px grey;
     padding: 15px 15px;
     border-radius: 8px;
+    width: 350px;
 }
 
 .aqua-percentile-widget-title {
-
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .aqua-percentile-widget-percentage {
@@ -44,6 +46,32 @@
 }
 
 .aqua-percentile-widget-footer {
+    font-size: 1.2rem;
+}
 
+.aqua-pie-chart-widget-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px grey;
+    padding: 15px 15px;
+    border-radius: 8px;
+    margin-left: 20px;
+    width: 350px;
+}
+
+.aqua-pie-chart-widget-title {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.aqua-pie-chart-container {
+    width: 250px;
+    margin: 10px 0;
+}
+
+.aqua-pie-chart-widget-footer {
+    font-size: 1.2rem
 }
 
