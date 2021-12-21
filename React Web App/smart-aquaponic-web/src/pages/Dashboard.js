@@ -23,7 +23,10 @@ const DUMMY_DATA = {
     monthlyFish: 40,
     monthlyPlant: 60,
 
-    lineChartData: null,
+    monthlyReportData: {
+        fish: [5.5, 6.2, 7.2, 5.6, 5.9, 6.4, 6.7, 5.2, 6.4, 6.6, 5.1, 5.3],
+        plant: [6.5, 6.6, 5.2, 6.6, 6.9, 6.1, 5.7, 5.7, 5.4, 5.3, 6.1, 6.4],
+    },
 }
 
 export default class Dashboard extends Component {
@@ -69,8 +72,8 @@ export default class Dashboard extends Component {
             monthlyProduction: responseData.monthlyProduction,
 
             pieChartData: [
-                { title: 'Fish', value: responseData.monthlyFish, color: '#31356e' },
-                { title: 'Plant', value: responseData.monthlyPlant, color: '#2f5f98' },
+                { title: 'Fish', value: responseData.monthlyFish, color: '#4047ad' },
+                { title: 'Plant', value: responseData.monthlyPlant, color: '#5c8fcc' },
             ],
 
             lineChartData: responseData.monthlyReportData,
@@ -179,7 +182,7 @@ export default class Dashboard extends Component {
                             title="Monthly Report"
                             xAxis="Time"
                             yAxis="Kg"
-                            data={lineChartData}
+                            lineChartData={lineChartData}
                         />
                     </div>
                 </div>

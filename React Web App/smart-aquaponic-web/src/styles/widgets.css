@@ -75,3 +75,7 @@
     font-size: 1.2rem
 }
 
+.aqua-line-chart-widget-container {
+    margin: 0 8px;
+    width: 800px;
+}
