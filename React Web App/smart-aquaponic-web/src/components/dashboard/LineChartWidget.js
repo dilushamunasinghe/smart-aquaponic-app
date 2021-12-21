@@ -21,22 +21,8 @@ ChartJS.register(
     Legend
 );
 
-const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'top',
-        },
-        title: {
-            display: true,
-            text: 'Monthly Report',
-        },
-    },
-};
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-
 
 export default function LineChartWidget({
     title,
@@ -65,31 +51,42 @@ export default function LineChartWidget({
         ],
     };
 
-    return (
-        <div className='aqua-line-chart-widget-container'>
-            <Line options={{
-                ...options,
-                scales: {
-                    xAxis: {
-                        title: {
-                            text: 'Time',
-                            display: true,
-                            font: {
-                                size: 18,
-                            }
-                        }
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Kg',
-                            display: true,
-                            font: {
-                                size: 18,
-                            }
-                        }
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: title,
+            },
+        },
+        scales: {
+            xAxis: {
+                title: {
+                    text: xAxis,
+                    display: true,
+                    font: {
+                        size: 18,
                     }
                 }
-            }} data={data} />
+            },
+            yAxis: {
+                title: {
+                    text: yAxis,
+                    display: true,
+                    font: {
+                        size: 18,
+                    }
+                }
+            }
+        }
+    };
+
+    return (
+        <div className='aqua-line-chart-widget-container'>
+            <Line options={options} data={data} />
         </div>
     )
 }

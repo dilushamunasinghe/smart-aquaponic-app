@@ -27,6 +27,12 @@ class Login extends Component {
         }
     }
 
+
+    /**
+     * Signs the user in with the given user name and password
+     * 
+     * @returns 
+     */
     userSignIn = () => {
         const { username, password } = this.state;
 
@@ -44,15 +50,28 @@ class Login extends Component {
         });
     }
 
+
+    /**
+     * Toggles the visibility of the password text
+     * 
+     */
     togglePasswordVisibility = () => {
         this.setState({ isPasswordVisible: !this.state.isPasswordVisible });
     }
 
+
+    /**
+     * Handles updating the state with the given value for the given property 
+     * 
+     * @param {*} newValue 
+     * @param {*} key 
+     */
     onChangeValue = (newValue, key) => {
         this.setState({
             [key]: newValue,
         })
     }
+
 
     render() {
 

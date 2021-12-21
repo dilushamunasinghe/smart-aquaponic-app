@@ -11,6 +11,10 @@ import Loader from '../components/common/Loader';
 import axios from 'axios';
 // import axios from 'axios';
 
+
+/**
+ * DUMMY DATA, remove when actual data is available ================
+ */
 const DUMMY_DATA = {
 
     lightIntensity: 10,
@@ -30,6 +34,10 @@ const DUMMY_DATA = {
         plant: [6.5, 6.6, 5.2, 6.6, 6.9, 6.1, 5.7, 5.7, 5.4, 5.3, 6.1, 6.4],
     },
 }
+/**
+ * DUMMY DATA, remove when actual data is available ================
+ */
+
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -54,12 +62,18 @@ export default class Dashboard extends Component {
         }
     }
 
+
     componentDidMount() {
         this.setState({ userName: localStorage.getItem('userName') });
 
         this.getAquaponicData();
     }
 
+
+    /**
+     * Gets aquaponic data from the database
+     * 
+     */
     getAquaponicData = () => {
 
         this.setState({ isLoading: true });
@@ -96,9 +110,15 @@ export default class Dashboard extends Component {
             });
     }
 
+
+    /**
+     * Signs the user out
+     * 
+     */
     userSignOut = () => {
         signOut();
     }
+
 
     render() {
 
