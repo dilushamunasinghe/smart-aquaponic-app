@@ -7,6 +7,8 @@ import ReadingsWidget from '../components/dashboard/ReadingsWidget';
 import { signOut } from '../services/authService';
 import '../styles/widgets.css';
 import '../styles/dashboard.css';
+import Loader from '../components/common/Loader';
+import axios from 'axios';
 // import axios from 'axios';
 
 const DUMMY_DATA = {
@@ -48,6 +50,7 @@ export default class Dashboard extends Component {
             lineChartData: null,
 
             userName: '',
+            isLoading: false,
         }
     }
 
@@ -59,51 +62,38 @@ export default class Dashboard extends Component {
 
     getAquaponicData = () => {
 
-        const responseData = DUMMY_DATA;
+        this.setState({ isLoading: true });
 
-        this.setState({
-            lightIntensity: responseData.lightIntensity,
-            elecConductivity: responseData.elecConductivity,
-            phValue: responseData.phValue,
-            humidity: responseData.humidity,
-            co2Level: responseData.co2Level,
-            ambientTemp: responseData.ambientTemp,
-            waterTemp: responseData.waterTemp,
-            monthlyProduction: responseData.monthlyProduction,
+        axios.get('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => {
 
-            pieChartData: [
-                { title: 'Fish', value: responseData.monthlyFish, color: '#4047ad' },
-                { title: 'Plant', value: responseData.monthlyPlant, color: '#5c8fcc' },
-            ],
+                // const responseData = response && response.data;
+                const responseData = DUMMY_DATA;
 
-            lineChartData: responseData.monthlyReportData,
-        });
+                this.setState({
+                    isLoading: false,
 
+                    lightIntensity: responseData.lightIntensity,
+                    elecConductivity: responseData.elecConductivity,
+                    phValue: responseData.phValue,
+                    humidity: responseData.humidity,
+                    co2Level: responseData.co2Level,
+                    ambientTemp: responseData.ambientTemp,
+                    waterTemp: responseData.waterTemp,
+                    monthlyProduction: responseData.monthlyProduction,
 
-        // axios.get('endpoint')
-        //     .then(response => {
-        //         const responseData = response && response.data;
-        //         this.setState({
-        //             lightIntensity: responseData.lightIntensity,
-        //             elecConductivity: responseData.elecConductivity,
-        //             phValue: responseData.phValue,
-        //             humidity: responseData.humidity,
-        //             co2Level: responseData.co2Level,
-        //             ambientTemp: responseData.ambientTemp,
-        //             waterTemp: responseData.waterTemp,
-        //             monthlyProduction: responseData.monthlyProduction,
+                    pieChartData: [
+                        { title: 'Fish', value: responseData.monthlyFish, color: '#4047ad' },
+                        { title: 'Plant', value: responseData.monthlyPlant, color: '#5c8fcc' },
+                    ],
 
-        //             pieChartData: [
-        //                 { title: 'Fish', value: responseData.monthlyFish, color: '#31356e' },
-        //                 { title: 'Plant', value: responseData.monthlyPlant, color: '#2f5f98' },
-        //             ],
-
-        //             lineChartData: responseData.monthlyReportData,
-        //         });
-        //     })
-        //     .catch(error => {
-        //         console.error(error);
-        //     });
+                    lineChartData: responseData.monthlyReportData,
+                });
+            })
+            .catch(error => {
+                this.setState({ isLoading: false });
+                console.error('Request Failed', error);
+            });
     }
 
     userSignOut = () => {
@@ -113,6 +103,7 @@ export default class Dashboard extends Component {
     render() {
 
         const {
+            isLoading,
             userName,
             lightIntensity,
             elecConductivity,
@@ -128,6 +119,12 @@ export default class Dashboard extends Component {
 
         return (
             <div className='aqua-dashboard-page-container'>
+
+                {
+                    isLoading &&
+                    < Loader />
+                }
+
                 <div className='aqua-dashboard-top-bar-container'>
                     <div className='aqua-dashboard-title'>
                         Dashboard
@@ -139,9 +136,10 @@ export default class Dashboard extends Component {
 
                         <div className='aqua-dashboard-logout-button-container'>
                             <Button
+                                variant='outlined'
                                 onClick={this.userSignOut}
                             >
-                                SignOut
+                                Logout
                             </Button>
                         </div>
                     </div>

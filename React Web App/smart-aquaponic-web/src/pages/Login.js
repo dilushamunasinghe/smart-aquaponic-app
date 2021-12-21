@@ -5,6 +5,8 @@ import { signIn } from '../services/authService';
 import '../styles/login.css';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Loader from '../components/common/Loader';
+import { toast } from 'react-toastify';
 
 const styles = {
     inputRoot: {
@@ -18,6 +20,7 @@ class Login extends Component {
         super(props)
 
         this.state = {
+            isLoading: false,
             username: '',
             password: '',
             isPasswordVisible: false,
@@ -27,7 +30,18 @@ class Login extends Component {
     userSignIn = () => {
         const { username, password } = this.state;
 
-        signIn(username, password);
+        if (!username || !password) {
+            toast.error('Please enter both user name and password');
+            return;
+        }
+
+        this.setState({ isLoading: true });
+
+        signIn(username, password, signInStatus => {
+            this.setState({ isLoading: false });
+
+            if (!signInStatus) toast.error('Error logging in');
+        });
     }
 
     togglePasswordVisibility = () => {
@@ -43,6 +57,7 @@ class Login extends Component {
     render() {
 
         const {
+            isLoading,
             isPasswordVisible,
             username,
             password,
@@ -54,7 +69,13 @@ class Login extends Component {
 
         return (
             <div className='aq-login-page-container'>
+
+                {isLoading &&
+                    <Loader />
+                }
+
                 <div className='aq-login-form-container'>
+                    <img className='aq-login-logo' alt='smart aquaponics logo' src='/aqua-logo.png' />
                     <div className='aq-login-text-container'>
                         <TextField
                             label='User Name'
