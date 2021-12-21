@@ -19,12 +19,12 @@ export const signIn = (userName, password, callback) => {
             console.error('Request Failed', error);
         });
 
-    if (!userName || !password) return;
+    // if (!userName || !password) return;
 
-    const requestBody = {
-        userName,
-        password
-    }
+    // const requestBody = {
+    //     userName,
+    //     password
+    // }
 
     // axios.post('https://jsonplaceholder.typicode.com/todos/1', requestBody)
     //     .then(response => {
