@@ -19,22 +19,26 @@ export const signIn = (userName, password, callback) => {
             console.error('Request Failed', error);
         });
 
-    // if(!userName || !password) return;
+    if (!userName || !password) return;
 
-    // const requestBody = {
-    //     userName,
-    //     password
-    // }
+    const requestBody = {
+        userName,
+        password
+    }
 
     // axios.post('https://jsonplaceholder.typicode.com/todos/1', requestBody)
     //     .then(response => {
     //         console.log(response && response.data);
 
     //         localStorage.setItem('accessToken', 'testing-token');
+
+    //         if (callback) callback(true);
+
     //         window.location.replace('/login');
     //     })
     //     .catch(error => {
     //         console.error('Request Failed', error);
+    //         if (callback) callback(false);
     //     });
 }
 
