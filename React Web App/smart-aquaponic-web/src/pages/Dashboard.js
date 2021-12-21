@@ -127,7 +127,7 @@ export default class Dashboard extends Component {
         } = this.state;
 
         return (
-            <div>
+            <div className='aqua-dashboard-page-container'>
                 <div className='aqua-dashboard-top-bar-container'>
                     <div className='aqua-dashboard-title'>
                         Dashboard
@@ -148,41 +148,43 @@ export default class Dashboard extends Component {
                 </div>
 
 
-                <div>
-                    <ReadingsWidget
-                        widgetData={{
-                            lightIntensity,
-                            elecConductivity,
-                            phValue,
-                            humidity,
-                            co2Level,
-                            ambientTemp,
-                            waterTemp,
-                        }}
-                    />
-                </div>
+                <div className='aqua-dashboard-main-content-container'>
+                    <div>
+                        <ReadingsWidget
+                            widgetData={{
+                                lightIntensity,
+                                elecConductivity,
+                                phValue,
+                                humidity,
+                                co2Level,
+                                ambientTemp,
+                                waterTemp,
+                            }}
+                        />
+                    </div>
 
-                <div>
-                    <PercentileWidget
-                        title="This month's production"
-                        percentage={monthlyProduction}
-                        footer="kg/time (30 days)"
-                    />
+                    <div className='aqua-middle-widget-section-container'>
+                        <PercentileWidget
+                            title="This month's production"
+                            percentage={monthlyProduction}
+                            footer="kg/time (30 days)"
+                        />
 
-                    <PieChartWidget
-                        title="This month's product prediction"
-                        data={pieChartData}
-                        footer="kg/time (30 days)"
-                    />
-                </div>
+                        <PieChartWidget
+                            title="This month's product prediction"
+                            data={pieChartData}
+                            footer="kg/time (30 days)"
+                        />
+                    </div>
 
-                <div>
-                    <LineChartWidget
-                        title="Monthly Report"
-                        xAxis="Time"
-                        yAxis="Kg"
-                        data={lineChartData}
-                    />
+                    <div>
+                        <LineChartWidget
+                            title="Monthly Report"
+                            xAxis="Time"
+                            yAxis="Kg"
+                            data={lineChartData}
+                        />
+                    </div>
                 </div>
 
             </div>

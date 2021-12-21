@@ -1,3 +1,11 @@
+.aqua-dashboard-page-container {
+
+}
+
+.aqua-dashboard-main-content-container {
+    padding: 10px 20px;
+}
+
 .aqua-dashboard-top-bar-container {
     display: flex;
     justify-content: space-between;
@@ -25,5 +33,10 @@
 }
 
 .aqua-dashboard-logout-button-container {
+    display: flex;
+}
 
+.aqua-middle-widget-section-container {
+    display: flex;
+    margin: 25px 8px;
 }
